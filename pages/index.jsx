@@ -1,8 +1,64 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import lodash from 'lodash';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [totalImages, setTotalImages] = useState(60);
+  const [numberOfImagesToShow, setShowImages] = useState(50);
+  const [urls, setUrls] = useState([]);
+  const [tagToUse, setTagToUse] = useState('Image');
+
+  useEffect(() => {
+    const imageUrls = lodash.shuffle(
+      new Array(numberOfImagesToShow)
+        .fill()
+        .map((_, index) => index + 1)
+        .map((i) => `/images/i${(i + 1) % totalImages}.jpg`)
+    );
+    setUrls(imageUrls);
+  }, [tagToUse]);
+
+  const renderImages = () => {
+    if (tagToUse === 'Image') {
+      return urls.map((url, index) => {
+        return (
+          <div className="col-4 m-4 mx-auto mb-3 text-center" key={index}>
+            <Image
+              width={900}
+              layout="intrinsic"
+              height={600}
+              placeholder={'blur'}
+              src={url}
+              blurDataURL={`/placeholder.webp`}
+              className="rounded"
+              alt=""
+              quality={20}
+            ></Image>
+            <p>
+              <b>{index + 1}.</b> Lorem ipsum dolor sit amet consectetur,
+              adipisicing elit.
+            </p>
+          </div>
+        );
+      });
+    }
+
+    return urls.map((url, index) => {
+      return (
+        <div className="col-4 m-4 mx-auto mb-3 text-center" key={index}>
+          <img src={url} className="img-fluid"></img>
+          <p>
+            <b>{index + 1}.</b> Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit.
+          </p>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,25 +72,26 @@ export default function Home() {
       </Head>
 
       <div className="text-center">
-        <h1>My Image Gallery</h1>
+        <h1>My Image Gallery ( {tagToUse} )</h1>
         <hr />
+
+        <button
+          type="button"
+          className="btn btn-outline-primary m-2"
+          onClick={() => setTagToUse('img')}
+        >
+          img tag
+        </button>
+        <button
+          type="button"
+          className="btn btn-outline-primary m-2"
+          onClick={() => setTagToUse('Image')}
+        >
+          Image Component
+        </button>
       </div>
 
-      {new Array(14).fill().map((_, index) => {
-        return (
-          <div className="col-8 mx-auto mb-3" key={index}>
-            <Image
-              width={1500}
-              layout="intrinsic"
-              height={1000}
-              src={`/images/image${index + 1}.jpg`}
-              className="rounded"
-              alt=""
-            ></Image>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-          </div>
-        );
-      })}
+      <div className="row">{renderImages()}</div>
     </div>
   );
 }
