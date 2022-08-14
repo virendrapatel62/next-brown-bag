@@ -26,7 +26,6 @@ export default function Home() {
               blurDataURL={`/placeholder.webp`}
               className="rounded"
               alt=""
-              quality={20}
             ></Image>
             <p>
               <b>{index + 1}.</b> Lorem ipsum dolor sit amet consectetur,
