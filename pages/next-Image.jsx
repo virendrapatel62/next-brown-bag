@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React, { Fragment } from 'react';
 import { faker } from '@faker-js/faker';
-import { images } from './data';
+import { images } from '../data';
 
 export default function img() {
   return (

@@ -2,7 +2,7 @@
 
 import Head from 'next/head';
 import React, { Fragment } from 'react';
-import { images } from './data';
+import { images } from '../data';
 
 export default function img() {
   return (
