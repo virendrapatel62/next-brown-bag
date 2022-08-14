@@ -27,9 +27,7 @@ export default function img() {
                       height={500}
                       width={500}
                       placeholder="blur"
-                      // blurDataURL="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2016/09/progressive-image-loading-pure-css.jpg?fit=542%2C407&ssl=1"
-                      blurDataURL={url}
-                      quality={100}
+                      blurDataURL="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2016/09/progressive-image-loading-pure-css.jpg?fit=542%2C407&ssl=1"
                     />
                     <div className="card-body">
                       <p className="card-text" suppressHydrationWarning>
