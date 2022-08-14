@@ -4,22 +4,13 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import lodash from 'lodash';
 import { useEffect, useState } from 'react';
+const urls = new Array(20)
+  .fill()
+  .map((_, index) => index + 1)
+  .map((i) => `/images/i${(i + 1) % 20}.jpg`);
 
 export default function Home() {
-  const [totalImages, setTotalImages] = useState(60);
-  const [numberOfImagesToShow, setShowImages] = useState(50);
-  const [urls, setUrls] = useState([]);
   const [tagToUse, setTagToUse] = useState('Image');
-
-  useEffect(() => {
-    const imageUrls = lodash.shuffle(
-      new Array(numberOfImagesToShow)
-        .fill()
-        .map((_, index) => index + 1)
-        .map((i) => `/images/i${(i + 1) % totalImages}.jpg`)
-    );
-    setUrls(imageUrls);
-  }, [tagToUse]);
 
   const renderImages = () => {
     if (tagToUse === 'Image') {
