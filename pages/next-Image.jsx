@@ -26,6 +26,7 @@ export default function img() {
                       alt={url}
                       height={500}
                       width={500}
+                      layout={'responsive'}
                       placeholder="blur"
                       blurDataURL="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2016/09/progressive-image-loading-pure-css.jpg?fit=542%2C407&ssl=1"
                     />
