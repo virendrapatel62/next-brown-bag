@@ -28,7 +28,7 @@ export default function img() {
                       width={50}
                       layout={'responsive'}
                       placeholder="blur"
-                      blurDataURL={`/_next/image?url=${url}&w=200&q=1`}
+                      blurDataURL={`/_next/image?url=${images[0]}&w=200&q=1`}
                     />
                     <div className="card-body">
                       <p className="card-text" suppressHydrationWarning>
