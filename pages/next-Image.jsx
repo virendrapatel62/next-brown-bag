@@ -24,11 +24,11 @@ export default function img() {
                     <Image
                       src={url}
                       alt={url}
-                      height={500}
-                      width={500}
+                      height={50}
+                      width={50}
                       layout={'responsive'}
                       placeholder="blur"
-                      blurDataURL="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2016/09/progressive-image-loading-pure-css.jpg?fit=542%2C407&ssl=1"
+                      blurDataURL={`/_next/image?url=${url}&w=640&q=1`}
                     />
                     <div className="card-body">
                       <p className="card-text" suppressHydrationWarning>
